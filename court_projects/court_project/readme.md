@@ -33,7 +33,7 @@ This mini-dashboard allows a user to:
 ## 🧠 Court Selected
 
 I targeted:  
-**[eCourts District Portals (India)](https://districts.ecourts.gov.in/)** using **CNR Number** search.
+**[eCourts District Portals (India)](https://districts.ecourtsindia.com/)** using **CNR Number** search.
 
 ---
 
