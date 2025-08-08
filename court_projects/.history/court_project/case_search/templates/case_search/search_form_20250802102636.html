@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Case Search</title>
+</head>
+<body>
+    <h1>Search for a Case</h1>
+    <form method="GET" action="{% url 'search_result' %}">
+        <label>Case Type:</label>
+        <input type="text" name="case_type" placeholder="e.g. DLSW02" required><br><br>
+
+        <label>Case Number:</label>
+        <input type="text" name="case_number" placeholder="e.g. 099120" required><br><br>
+
+        <label>Filing Year:</label>
+        <input type="number" name="year" placeholder="e.g. 2025" required><br><br>
+
+        <button type="submit">Search</button>
+    </form>
+</body>
+</html>

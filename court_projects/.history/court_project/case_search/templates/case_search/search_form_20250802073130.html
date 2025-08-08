@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Case Search</title>
+</head>
+<body>
+    <h1>Search Case by CNR</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="cnr" placeholder="Enter CNR number" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if case %}
+        <h2>Case Details</h2>
+        <p><strong>Case Number:</strong> {{ case.case_number }}</p>
+        <p><strong>Petitioner:</strong> {{ case.petitioner }}</p>
+        <p><strong>Respondent:</strong> {{ case.respondent }}</p>
+        <p><strong>Court:</strong> {{ case.court_name }}</p>
+        <p><strong>Status:</strong> {{ case.status }}</p>
+
+        <h3>Orders</h3>
+        <ul>
+            {% for order in case.orders.all %}
+                <li>{{ order.date }}: <a href="{{ order.pdf_url }}" target="_blank">{{ order.summary }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
+

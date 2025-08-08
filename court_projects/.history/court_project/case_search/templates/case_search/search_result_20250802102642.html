@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Result</title>
+</head>
+<body>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+        <a href="{% url 'search_form' %}">Try Again</a>
+    {% else %}
+        <h1>Case Details</h1>
+        <p><strong>Case Number:</strong> {{ case.case_number }}</p>
+        <p><strong>Petitioner:</strong> {{ case.petitioner }}</p>
+        <p><strong>Respondent:</strong> {{ case.respondent }}</p>
+        <p><strong>Filing Date:</strong> {{ case.filing_date }}</p>
+        <p><strong>Registration Date:</strong> {{ case.registration_date }}</p>
+        <p><strong>Hearing Date:</strong> {{ case.hearing_date }}</p>
+        <p><strong>Status:</strong> {{ case.status }}</p>
+        <p><strong>Court:</strong> {{ case.court_name }}</p>
+
+        {% if orders %}
+            <h2>Orders</h2>
+            <ul>
+                {% for order in orders %}
+                    <li>
+                        {{ order.date }} - {{ order.summary }}
+                        [<a href="{{ order.pdf_url }}" target="_blank">PDF</a>]
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <a href="{% url 'search_form' %}">Search Again</a>
+    {% endif %}
+</body>
+</html>

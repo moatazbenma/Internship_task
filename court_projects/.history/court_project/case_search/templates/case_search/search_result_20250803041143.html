@@ -1,0 +1,23 @@
+{% extends "case_search/base.html" %}
+
+{% block title %}Search Result{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Search Result</h2>
+
+{% if case %}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Case Number: {{ case.case_number }}</h5>
+            <p><strong>Petitioner:</strong> {{ case.petitioner }}</p>
+            <p><strong>Respondent:</strong> {{ case.respondent }}</p>
+            <p><strong>Status:</strong> {{ case.status }}</p>
+            <p><strong>Filing Date:</strong> {{ case.filing_date }}</p>
+        </div>
+    </div>
+{% else %}
+    <div class="alert alert-warning">No case data available.</div>
+{% endif %}
+
+<a href="{% url 'case_search:search_form' %}" class="btn btn-secondary mt-3">🔁 Back to Search</a>
+{% endblock %}

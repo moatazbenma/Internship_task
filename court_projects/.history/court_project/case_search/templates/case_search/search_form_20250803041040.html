@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Search Case{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Search by CNR Number</h2>
+<form method="get" action="{% url 'case_search:search' %}" id="searchForm">
+    <div class="mb-3">
+        <label for="cnr" class="form-label">Enter CNR Number</label>
+        <input type="text" name="cnr" id="cnr" class="form-control"
+               placeholder="e.g., DLSW020991202025" required>
+    </div>
+    <button type="submit" class="btn btn-primary" id="submitBtn">Search</button>
+</form>
+<script>
+    const form = document.getElementById('searchForm');
+    const btn = document.getElementById('submitBtn');
+    form.addEventListener('submit', () => {
+        btn.disabled = true;
+        btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Searching...`;
+    });
+</script>
+{% endblock %}
